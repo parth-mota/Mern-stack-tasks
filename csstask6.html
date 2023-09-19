@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+
+            body {font-family: Arial, Helvetica, sans-serif;}
+                .form-container {border: 3px solid #f1f1f1;}
+                .input-field {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+            }
+            .submit-button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+            }
+            .submit-button:hover {
+                opacity: 0.8;
+            }
+            .cancel-button {
+                width: auto;
+                padding: 10px 18px;
+                background-color: #f44336;
+            }
+            .image-container {
+                text-align: center;
+                margin: 24px 0 12px 0;
+            }
+            .avatar-image {
+                width: 40%;
+                border-radius: 50%;
+            }
+            .container {
+                padding: 16px;
+            }
+            .password-link {
+                float: right;
+                padding-top: 16px;
+            }
+
+            @media screen and (max-width: 300px) {
+                .password-link {
+                    display: block;
+                    float: none;
+                }
+                .cancel-button {
+                    width: 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <form action="/action_page.php" method="post" class="form-container">
+        <div class="image-container">
+            <img src="C:\Users\Lenovo\Pictures\Screenshots\Screenshot 2023-09-19 103007.png" alt="Avatar" class="avatar-image">
+        </div>
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required class="input-field">
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required class="input-field">
+                    
+                <button type="submit" class="submit-button">Login</button>
+                <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </div>
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" class="cancel-button">Cancel</button>
+                <span class="password-link">Forgot <a href="#">password?</a></span>
+            </div>
+        </form>
+    </body>
+</html>
