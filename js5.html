@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <style>
+        .error {color: red;}
+        .submit-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            flex: 1;
+            padding-right: 10px;
+            text-align: right;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            flex: 2;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            width: 100%;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<form id="myForm">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <span class="error" id="nameError"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email">
+        <span class="error" id="emailError"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="website">Website:</label>
+        <input type="text" id="website" name="website">
+        <span class="error" id="websiteError"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" cols="50"></textarea>
+        <span class="error" id="messageError"></span>
+    </div>
+
+    <input type="submit" class="submit-button" value="Submit">
+</form>
+
+<script>
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+        var isValid = true;
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var website = document.getElementById("website").value;
+        var message = document.getElementById("message").value;
+
+        if (name === "") {
+            document.getElementById("nameError").innerHTML = "This field is required";
+            isValid = false;
+        } else {
+            document.getElementById("nameError").innerHTML = "";
+        }
+
+        if (email === "") {
+            document.getElementById("emailError").innerHTML = "A valid email address is required";
+            isValid = false;
+        } else {
+            document.getElementById("emailError").innerHTML = "";
+        }
+
+        // Add more email validation if needed
+
+        if (website === "") {
+            document.getElementById("websiteError").innerHTML = "A valid url is required";
+            isValid = false;
+        } else {
+            document.getElementById("websiteError").innerHTML = "";
+        }
+
+        if (message === "") {
+            document.getElementById("messageError").innerHTML = "This field is required";
+            isValid = false;
+        } else {
+            document.getElementById("messageError").innerHTML = "";
+        }
+
+        if (!isValid) {
+            event.preventDefault();
+        }
+    });
+</script>
+
+</body>
+</html>

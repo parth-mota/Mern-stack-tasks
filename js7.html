@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Animation Control</title>
+    <style>
+        .train-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .train {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: moveTrain 4s linear infinite;
+        }
+
+        @keyframes moveTrain {
+            0% {
+                left: -200px;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .animation-controls {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="train-container">
+        <img class="train" id="train" src="C:\Users\Lenovo\Downloads\green-locomotive-train-closeup_269543-1938.avif" alt="Train">
+    </div>
+    <div class="animation-controls">
+        <button onclick="startAnimation()">Start</button>
+        <button onclick="stopAnimation()">Stop</button>
+    </div>
+
+    <script>
+        let animationInterval;
+
+        function startAnimation() {
+            document.getElementById("train").style.animation = "moveTrain 4s linear infinite";
+        }
+
+        function stopAnimation() {
+            document.getElementById("train").style.animation = "none";
+        }
+    </script>
+</body>
+</html>

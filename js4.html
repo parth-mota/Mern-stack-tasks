@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Date and Time</title>
+    <style>
+        .output {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<button onclick="showDate()">Show Date</button>
+<br><br>
+<button onclick="showTime()">Show Time</button>
+
+<div class="output" id="output"></div>
+
+<script>
+    function showDate() {
+        var now = new Date();
+        var dateStr = now.toDateString();
+        document.getElementById("output").innerText = "Current Date: " + dateStr;
+    }
+
+    function showTime() {
+        var now = new Date();
+        var timeStr = now.toLocaleTimeString();
+        document.getElementById("output").innerText += "\nCurrent Time: " + timeStr;
+    }
+</script>
+
+</body>
+</html>

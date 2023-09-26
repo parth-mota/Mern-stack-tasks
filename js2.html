@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Letters</title>
+    <script>
+        function sortLetters() {
+            let userInput = document.getElementById('stringInput').value;
+
+            // Remove non-alphabetic characters and convert to lowercase
+            let sortedString = userInput.replace(/[^a-zA-Z]/g, '').toLowerCase();
+
+            // Sort the characters
+            sortedString = sortedString.split('').sort().join('');
+
+            document.getElementById('result').textContent = `Sorted string: ${sortedString}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Sort Letters</h1>
+    <label for="stringInput">Enter a string:</label>
+    <input type="text" id="stringInput">
+    <button onclick="sortLetters()">Sort</button>
+    <div id="result"></div>
+</body>
+</html>
