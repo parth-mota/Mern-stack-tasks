@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <style>
+        .error {color: red;}
+        .submit-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+
+<form id="myForm">
+    <div>
+        <label for="name">Name:</label>
+        <br>
+        <input type="text" id="name" name="name">
+        <span class="error" id="nameError"></span>
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <br>
+        <input type="text" id="email" name="email">
+        <span class="error" id="emailError"></span>
+    </div>
+
+    <div>
+        <label for="password">Password:</label>
+        <br>
+        <input type="password" id="password" name="password">
+        <span class="error" id="passwordError"></span>
+    </div>
+
+    <div>
+        <label for="hobbies">Hobbies:</label>
+        <br>
+        <input type="text" id="hobbies" name="hobbies">
+        <span class="error" id="hobbiesError"></span>
+    </div>
+    <br>
+
+    <input type="submit" class="submit-button" value="Submit">
+</form>
+
+<script>
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+        var isValid = true;
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var hobbies = document.getElementById("hobbies").value;
+
+        if (name === "") {
+            document.getElementById("nameError").innerHTML = "Name is required";
+            isValid = false;
+        } else {
+            document.getElementById("nameError").innerHTML = "";
+        }
+
+        if (email === "") {
+            document.getElementById("emailError").innerHTML = "Email is required";
+            isValid = false;
+        } else {
+            document.getElementById("emailError").innerHTML = "";
+        }
+
+        // Add more email validation if needed
+
+        if (password === "") {
+            document.getElementById("passwordError").innerHTML = "Password is required";
+            isValid = false;
+        } else {
+            document.getElementById("passwordError").innerHTML = "";
+        }
+
+        if (hobbies === "") {
+            document.getElementById("hobbiesError").innerHTML = "Hobbies are required";
+            isValid = false;
+        } else {
+            document.getElementById("hobbiesError").innerHTML = "";
+        }
+
+        if (!isValid) {
+            event.preventDefault();
+        }
+    });
+</script>
+
+</body>
+</html>

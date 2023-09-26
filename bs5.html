@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <style>
+        .error {color: red;}
+        .submit-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input[type="text"], 
+        .form-group input[type="email"], 
+        .form-group input[type="tel"], 
+        .form-group input[type="radio"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group .radio-label {
+            display: inline-block;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<form id="myForm">
+    <div class="form-group">
+        <label for="firstname">First Name:</label>
+        <br>
+        <input type="text" id="firstname" name="firstname">
+        <span class="error" id="firstnameError"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="lastname">Last Name:</label>
+        <br>
+        <input type="text" id="lastname" name="lastname">
+        <span class="error" id="lastnameError"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <br>
+        <input type="email" id="email" name="email">
+        <span class="error" id="emailError"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone:</label>
+        <br>
+        <input type="tel" id="phone" name="phone">
+        <span class="error" id="phoneError"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="address">Address:</label>
+        <br>
+        <input type="text" id="address" name="address">
+        <span class="error" id="addressError"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="city">City:</label>
+        <br>
+        <input type="text" id="city" name="city">
+        <span class="error" id="cityError"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="state">State:</label>
+        <br>
+        <select id="state" name="state">
+            <option value="">Select a state</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Nagaland">Nagaland</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tripura">Tripura</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="West Bengal">West Bengal</option>
+        </select>
+        <span class="error" id="stateError"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Do you have hosting?</label>
+        <label class="radio-label"><input type="radio" name="hosting" value="yes">Yes</label>
+        <label class="radio-label"><input type="radio" name="hosting" value="no">No</label>
+        <span class="error" id="hostingError"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Project Description:</label>
+        <input type="text" id="description" name="description">
+        <span class="error" id="descriptionError"></span>
+    </div>
+
+    <input type="submit" class="submit-button" value="Submit">
+</form>
+
+<script>
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+        var isValid = true;
+
+        var fields = ['firstname', 'lastname', 'email', 'phone', 'address', 'city', 'state', 'description'];
+        for (var i = 0; i < fields.length; i++) {
+            var field = document.getElementById(fields[i]);
+            var error = document.getElementById(fields[i] + 'Error');
+
+            if (field.value === "") {
+                error.innerHTML = field.name.charAt(0).toUpperCase() + field.name.slice(1) + " is required";
+                isValid = false;
+            } else {
+                error.innerHTML = "";
+            }
+        }
+
+        var hostingRadio = document.getElementsByName('hosting');
+        var hostingError = document.getElementById('hostingError');
+        var hostingChecked = false;
+
+        for (var i = 0; i < hostingRadio.length; i++) {
+            if (hostingRadio[i].checked) {
+                hostingChecked = true;
+                hostingError.innerHTML = "";
+                break;
+            }
+        }
+
+        if (!hostingChecked) {
+            hostingError.innerHTML = "Hosting choice is required";
+            isValid = false;
+        }
+
+        if (!isValid) {
+            event.preventDefault();
+        }
+    });
+</script>
+
+</body>
+</html>
